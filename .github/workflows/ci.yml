@@ -1,15 +1,33 @@
 
-name: JavaScript CI Workflow
-on: [push]
+name: CI - Hola Mundo
+# on: [push]
+# jobs:
+#   run-script:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout repository
+#         uses: actions/checkout@v4
+#       - name: Install Node.js
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: '18'
+#       - name: Run JavaScript script
+#         run: node script.js
+
+
+#         name: CI - Hello World
+
+on:
+  push:
+    branches: [ main ]
+
 jobs:
-  run-script:
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-      - name: Install Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-      - name: Run JavaScript script
-        run: node script.js
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Run Hello World script
+      run: echo "Ejecutando el script de Hello World..." && node -e 'console.log("¡Hola Mundo desde el workflow de CI!");'
